@@ -1,0 +1,21 @@
+FROM ubuntu:22.04
+
+# Install nginx + curl (curl required for healthcheck)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends nginx curl && \
+    rm -rf /var/lib/apt/lists/*
+
+# Create non-root user
+RUN useradd -m appuser
+
+# Switch user
+USER appuser
+
+# Expose web port
+EXPOSE 80
+
+# Healthcheck
+HEALTHCHECK CMD curl --fail http://localhost || exit 1
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,10 @@
+FROM ubuntu:latest
+
+# Running as root (bad practice)
+RUN apt-get update && apt-get install -y nginx
+
+# Exposing unnecessary ports
+EXPOSE 22 80 443 8080
+
+# No healthcheck
+CMD ["nginx", "-g", "daemon off;"]
