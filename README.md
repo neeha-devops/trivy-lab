@@ -21,14 +21,15 @@ The goal was to identify security risks in a vulnerable container image and redu
 - Python (sample app)
 
 📦 Project Structure
-trivy-lab/
-│
-├── Dockerfile # Vulnerable image
-├── Dockerfile.secure # Hardened image
-├── app.py # Sample application
-├── scan.sh # Automated scan script
-├── trivy-report.txt # Scan report
-└── README.md
+
+   trivy-lab/
+   │
+   ├── Dockerfile # Vulnerable image
+   ├── Dockerfile.secure # Hardened image
+   ├── app.py # Sample application
+   ├── scan.sh # Automated scan script
+   ├── trivy-report.txt # Scan report
+   └── README.md
 
 🚨 Vulnerable Image
 
@@ -69,6 +70,7 @@ Scan Command
 trivy image hardened-app:v1
 
 📊 Vulnerability Comparison 
+
  Image            Critical   High   Medium   Low 
  -------------- | -------- | ---- | ------ | --- |
 | Vulnerable App |   0       | 0    | 5      | 0   |
@@ -106,12 +108,9 @@ Private key exposure risk
 ⚙️ Automation Script
 
 Example scan script:
-
 #!/bin/bash
 IMAGE=$1
-
 trivy image --severity HIGH,CRITICAL $IMAGE
-
 if [ $? -eq 0 ]; then
   echo "Image Passed Security Scan"
 else
