@@ -64,12 +64,8 @@ trivy image hardened-app:v1
 
 📊 Vulnerability Comparison 
 
- Image            Critical   High   Medium   Low 
- -------------- | -------- | ---- | ------ | --- |
-| Vulnerable App |   0       | 0    | 5      | 0   |
-| Hardened App   |   0       | 0    | 0–Few  | Few |
+<img width="1010" height="234" alt="image" src="https://github.com/user-attachments/assets/c97d7e89-c202-4c62-b5d0-e4f68c324982" />
 
-Hardened image significantly reduces the vulnerability footprint.
 
 📑 Severity Filtering
 
@@ -89,6 +85,7 @@ trivy image -f table -o report.txt vulnerable-app:v1
 Fail pipeline if critical vulnerabilities exist:
 trivy image --exit-code 1 --severity CRITICAL vulnerable-app:v1
 echo $?
+
 Exit Codes:
 0 → Pass
 1 → Fail
