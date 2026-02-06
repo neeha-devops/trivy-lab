@@ -22,14 +22,7 @@ The goal was to identify security risks in a vulnerable container image and redu
 
 📦 Project Structure
 
-   trivy-lab/
-   │
-   ├── Dockerfile # Vulnerable image
-   ├── Dockerfile.secure # Hardened image
-   ├── app.py # Sample application
-   ├── scan.sh # Automated scan script
-   ├── trivy-report.txt # Scan report
-   └── README.md
+<img width="405" height="285" alt="image" src="https://github.com/user-attachments/assets/429136bc-93bb-4d6f-8836-5684d67deaec" />  
 
 🚨 Vulnerable Image
 
