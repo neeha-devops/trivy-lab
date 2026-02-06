@@ -7,17 +7,25 @@ The goal was to identify security risks in a vulnerable container image and redu
 🎯 Objectives
 
 - Install and configure Trivy
+
 - Scan public and custom Docker images
+
 - Identify vulnerabilities by severity
+
 - Compare vulnerable vs hardened images
+
 - Generate security reports
+
 - Simulate CI/CD security gates
 
 🧰 Tools Used
 
 - Docker
+
 - Trivy
+
 - Linux / WSL
+
 - Python (sample app)
 
 📦 Project Structure
@@ -33,8 +41,11 @@ ubuntu:18.04
 ### Issues Introduced
 
 - Outdated OS (EOL)
+
 - Large attack surface
+
 - Multiple unnecessary packages
+
 - Runs as root user
 
 ### Build Command
@@ -95,16 +106,21 @@ trivy image -f table -o report.txt vulnerable-app:v1
 Fail pipeline if critical vulnerabilities exist:
 
 trivy image --exit-code 1 --severity CRITICAL vulnerable-app:v1
+
 echo $?
 
 Exit Codes:
+
 0 → Pass
+
 1 → Fail
 
 🔍 Filesystem Secret Scan
 
 trivy fs /etc
+
 Detected:
+
 Private key exposure risk
 
 ⚙️ Automation Script
@@ -112,16 +128,24 @@ Private key exposure risk
 Example scan script:
 
 #!/bin/bash
+
 IMAGE=$1
+
 trivy image --severity HIGH,CRITICAL $IMAGE
+
 if [ $? -eq 0 ]; then
+ 
   echo "Image Passed Security Scan"
+
 else
+ 
   echo "Image Failed Security Scan"
+
 fi
 
 Run:
 
 chmod +x scan.sh
+
 ./scan.sh hardened-app:v1
 
